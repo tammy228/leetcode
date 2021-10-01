@@ -1,0 +1,9 @@
+# ignore .idea
+.idea/
+
+# ignore cmake and debug list
+cmake-build-debug/
+CMakeLists.txt
+
+# ignore test.cpp
+test.cpp
