@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <numeric>
 using namespace std;
 // My Solution: Totally not work out, just pass half of the input
 //bool canPartitionKSubsets(vector<int>& nums, int k) {
@@ -73,12 +74,37 @@ using namespace std;
  *  2.1 make sure sum(nums) % k == 0 or return false
  *  2.2 backtrack all the possibilities
  */
-bool canPartitionKSubsets(vector<int>& nums, int k) {
+// MUST USE "Past by Reference" or it will time limit
+// Time Complexity: O(k!(k^N))
+bool backtrack(vector<int>& nums, vector<int>& used, int subsetSum, int bucketSum, int k, int iterateStart){
+    // Finish Condition
+    if(k == 1)
+        return true;
+    // If we did find a subset
+    if(bucketSum == subsetSum)
+        return backtrack(nums, used, subsetSum, 0, --k, 0);
 
+    for(int i=iterateStart; i<nums.size(); i++){
+        if(bucketSum + nums[i] > subsetSum) continue;
+        if(!used[i]) {
+            used[i] = 1;
+            if (backtrack(nums, used, subsetSum, bucketSum + nums[i], k, i + 1)) return true;
+            used[i] = 0;
+        }
+    }
+    return false;
+}
+bool canPartitionKSubsets(vector<int>& nums, int k) {
+    sort(nums.begin(), nums.end());
+    int sum = accumulate(nums.begin(), nums.end(), 0);
+    vector<int> used(nums.size(), 0);
+    if(sum % k != 0)
+        return false;
+    return backtrack(nums,used, sum / k, 0, k, 0);
 }
 int main(){
-    int k = 2;
-    vector<int> nums = {1,1,1,1,9};
+    int k = 3;
+    vector<int> nums = {129,17,74,57,1421,99,92,285,1276,218,1588,215,369,117,153,22};
     bool ans = canPartitionKSubsets(nums, k);
     cout <<"ans: "<< ans << endl;
 }
