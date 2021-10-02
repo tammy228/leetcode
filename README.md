@@ -1,4 +1,4 @@
-# leetcode_c_plus_plus
+# leetcode
 
 pick up c++ after graduated.
 
