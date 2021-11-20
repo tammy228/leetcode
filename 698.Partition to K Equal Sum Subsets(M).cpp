@@ -102,9 +102,9 @@ bool canPartitionKSubsets(vector<int>& nums, int k) {
         return false;
     return backtrack(nums,used, sum / k, 0, k, 0);
 }
-int main(){
-    int k = 3;
-    vector<int> nums = {129,17,74,57,1421,99,92,285,1276,218,1588,215,369,117,153,22};
-    bool ans = canPartitionKSubsets(nums, k);
-    cout <<"ans: "<< ans << endl;
-}
+//int main(){
+//    int k = 3;
+//    vector<int> nums = {129,17,74,57,1421,99,92,285,1276,218,1588,215,369,117,153,22};
+//    bool ans = canPartitionKSubsets(nums, k);
+//    cout <<"ans: "<< ans << endl;
+//}

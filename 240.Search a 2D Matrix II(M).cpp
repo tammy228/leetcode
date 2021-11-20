@@ -28,19 +28,19 @@ using namespace std;
 //    return ans;
 //}
 // Optimize
-bool searchMatrix(vector<vector<int>>& matrix, int target) {
-    // if we consider the upper right corner
-    // from that position if we see the values below it are increasing while values left to it are decreasing,
-    // so we use this to find our solution
-    int row = matrix.size();
-    int col = matrix[0].size();
-    int i=0;
-    int j = col-1;
-    while(i<row && j>=0){
-        if(matrix[i][j] == target)
-            return true;
-        else if(matrix[i][j] > target) j--;
-        else i++;
-    }
-    return false;
-}
+//bool searchMatrix(vector<vector<int>>& matrix, int target) {
+//    // if we consider the upper right corner
+//    // from that position if we see the values below it are increasing while values left to it are decreasing,
+//    // so we use this to find our solution
+//    int row = matrix.size();
+//    int col = matrix[0].size();
+//    int i=0;
+//    int j = col-1;
+//    while(i<row && j>=0){
+//        if(matrix[i][j] == target)
+//            return true;
+//        else if(matrix[i][j] > target) j--;
+//        else i++;
+//    }
+//    return false;
+//}
