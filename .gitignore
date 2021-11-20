@@ -7,3 +7,6 @@ CMakeLists.txt
 
 # ignore test.cpp
 test.cpp
+
+# ignore .DS_store
+.DS_Store
