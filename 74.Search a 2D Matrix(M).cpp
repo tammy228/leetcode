@@ -4,7 +4,7 @@ using namespace std;
 /*
  * My Solution
  * 1. find which row it would be by iterate the row find the row which is bigger than the target.
- * 2. Apply binary seacrch to that row.
+ * 2. Apply binary search to that row.
  * Edge Case:
  *  (1) In 1. if the first elements are all smaller than target.
  *  (2) Only one element in array.
