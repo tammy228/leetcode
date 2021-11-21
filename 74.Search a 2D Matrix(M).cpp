@@ -41,8 +41,8 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
     }else
          return binarySearch(matrix[row], target);
 }
-int main(){
-    vector<vector<int>> nums = {{1}};
-    bool ans = searchMatrix(nums, 0);
-    cout << ans << endl;
-}
+//int main(){
+//    vector<vector<int>> nums = {{1}};
+//    bool ans = searchMatrix(nums, 0);
+//    cout << ans << endl;
+//}
