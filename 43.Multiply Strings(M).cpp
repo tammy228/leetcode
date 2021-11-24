@@ -85,9 +85,9 @@ string multiply(string num1, string num2){
             s += to_string(it);
     return s;
 }
-int main(){
-    string num1 = "456";
-    string num2 = "123";
-    string ans = multiply(num1, num2);
-    cout << "ans: " << ans << endl;
-}
+//int main(){
+//    string num1 = "456";
+//    string num2 = "123";
+//    string ans = multiply(num1, num2);
+//    cout << "ans: " << ans << endl;
+//}
