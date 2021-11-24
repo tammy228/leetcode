@@ -25,8 +25,8 @@ vector<int> productExceptSelf(vector<int>& nums) {
     }
     return result;
 }
-int main(){
-    vector<int> nums = {1,2,3,4};
-    vector<int> result = productExceptSelf(nums);
-}
+//int main(){
+//    vector<int> nums = {1,2,3,4};
+//    vector<int> result = productExceptSelf(nums);
+//}
 
