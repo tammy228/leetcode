@@ -149,8 +149,8 @@ int numDecodings(string s) {
     }
     return p1;
 }
-int main(){
-    string s = "1234";
-    numDecodings_dfs(s, 0, 1 ,0);
-}
+//int main(){
+//    string s = "1234";
+//    numDecodings_dfs(s, 0, 1 ,0);
+//}
 
