@@ -35,7 +35,7 @@ int numDistinct(string s, string t){
     int n = t.size();
     vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
 
-    // for-loop
+    // for-loop(Bottom up)
     for(int i=0; i<=m; i++)
         dp[0][i] = 1;
     for(int i=1; i<=n; i++)
@@ -47,7 +47,7 @@ int numDistinct(string s, string t){
 
     return dp[n][m];
 
-    // recursive
+    // recursive(Top down)
     return dfs(dp, s, t, 0, 0);
 }
 
