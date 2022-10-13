@@ -21,6 +21,9 @@ using namespace std;
  *  Edge Case: s.size() == 1 return false
  *
  *  Missing Part: didn't consider the case, that if stack is empty therefore there is no stack.back()
+ *
+ *  Time: O(n)
+ *  Space: O(n)
  */
 bool isValid(string s) {
     if(s.size() == 1) return false;
