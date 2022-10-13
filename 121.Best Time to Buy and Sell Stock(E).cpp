@@ -4,10 +4,14 @@ using namespace std;
 /*
  * My Solution
  * *(Sliding window)
- * 1. iterate vector if right<left -> left = right
- * 2. during iteration
- *    if element < left: left  = right = element
- *    else calculate profit
+ *
+ * use two pointers left and right, left: buy, right: sell
+ * during the iteration,
+ *  if right value > left value:
+ *      left = right (and we don't need to calc the profit)
+ *  else
+ *      calc the profit, and if it's bigger than previous replace it.
+ *
  *
  * Time: O(n)
  *
