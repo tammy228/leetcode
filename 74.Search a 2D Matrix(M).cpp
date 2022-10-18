@@ -6,8 +6,8 @@ using namespace std;
  * 1. find which row it would be by iterate the row find the row which is bigger than the target.
  * 2. Apply binary search to that row.
  * Edge Case:
- *  (1) In 1. if the first elements are all smaller than target.
- *  (2) Only one element in array.
+ * 1. In 1. if the first elements are all smaller than target.
+ *    if the answer exists, it can only appear in the last row.
  */
 bool binarySearch(vector<int>& nums, int target){
     int left=0, right=nums.size()-1;
@@ -32,8 +32,9 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
             break;
         }
     }
-    // Edge Case
+
     if(row == -1){
+        // Edge Case
         if(target <= matrix[matrix.size()-1][matrix[matrix.size()-1].size()-1])
              return binarySearch(matrix[matrix.size()-1], target);
         else
