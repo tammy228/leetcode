@@ -7,7 +7,7 @@ using namespace std;
  * 1. Find four directions of starting pixels and add it to a queue.
  * 2. while queue ≠ empty():
  *      1. pop elements
- *      2. check four directions, and add ori_colorid pixels into queue.
+ *      2. check four directions, and add ori_color pixels into queue.
  *      3. plus the number by 1 // WRONG! Should be fill with the number that the question gave.
  *      4. BFS()
  * Edge Case:
@@ -52,6 +52,11 @@ void bfs(vector<vector<int>>& image, int sr, int sc, int color){
  * Optimize
  * DFS
  * use recursive call to check each cell.
+ *
+ * Time:
+ * O(M*N), where M, N is the dimension of the Matrix.
+ * Space:
+ * O(M*N), although we didn't create new space, it will call the stack to have the size
  */
 void dfs(vector<vector<int>>& image, int i, int j,int ori_color, int color)
 {
