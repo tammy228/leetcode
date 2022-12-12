@@ -5,9 +5,17 @@ using namespace std;
  * My Solution
  * 1. find which row it would be by iterate the row find the row which is bigger than the target.
  * 2. Apply binary search to that row.
+ *
  * Edge Case:
  * 1. In 1. if the first elements are all smaller than target.
  *    if the answer exists, it can only appear in the last row.
+ *
+ * Time:
+ * O(N): the worst case is the target lies in last row
+ *
+ * Space:
+ * O(1)
+ *
  */
 bool binarySearch(vector<int>& nums, int target){
     int left=0, right=nums.size()-1;
