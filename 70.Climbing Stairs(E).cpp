@@ -21,3 +21,23 @@ int climbStairs(int n) {
     }
     return dp[n];
 }
+
+/*
+ * Optimize
+ * We can use two variables to do store information
+ */
+
+int climbStairs(int n) {
+    if(n == 1) return 1;
+    if(n == 2) return 2;
+    int first = 1;
+    int second = 2;
+    int result;
+    for(int i=3; i<=n; i++){
+        result = first + second;
+        first = second;
+        second = result;
+    }
+    return result;
+}
+
