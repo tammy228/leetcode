@@ -28,3 +28,29 @@ int longestPalindrome(string s) {
 //    int test = longestPalindrome(s);
 //    cout << test;
 //}
+/*
+ * My Solution
+ * Use map to store how many times each character appears
+ * iterate the map to calculate the longest length of palindrome
+ */
+int longestPalindrome(string s) {
+    unordered_map<char, int> map;
+    int result = 0;
+    int odd_count = 0;
+    for(auto alpha: s){
+
+        map[alpha]++;
+    }
+    for(auto item: map){
+        if(item.second % 2 == 0){
+            result += item.second;
+        }else{
+            result += item.second-1;
+            odd_count = 1;
+        }
+    }
+    if(odd_count)
+        return result+1;
+    else
+        return result;
+}
