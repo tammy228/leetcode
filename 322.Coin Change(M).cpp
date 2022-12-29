@@ -1,5 +1,7 @@
 #include<iostream>
 #include<vector>
+#include <queue>
+#include <unordered_set>
 using namespace std;
 /*
  * My Solution
@@ -32,5 +34,35 @@ int coinChange(vector<int>& coins, int amount) {
         return -1;
     else
         return dp[amount];
+}
+
+/*
+ * BFS Version
+ * Solve it as a Tree
+ *
+ * Time:
+ */
+int bfs(vector<int>& coins, int amount){
+    queue<pair<long, int>> q;
+    q.push({0,0}); // q.first: current_amount, q.second: level
+    unordered_set<int> seen;
+    while(!q.empty() && q.front().first <= amount){
+        long current_amount = q.front().first;
+        int level = q.front().second;
+        q.pop();
+        if(current_amount == amount)
+            return level; // 因為是BFS，第一個找到的一定是最小的
+        if(seen.count(current_amount))
+            continue;
+        for(auto coin: coins) {
+            if(current_amount + coin <= amount)
+                q.push({current_amount + coin, level + 1});
+        }
+        seen.insert(current_amount);
+    }
+    return -1;
+}
+int coinChange(vector<int>& coins, int amount) {
+    return bfs(coins, amount);
 }
 
