@@ -7,6 +7,22 @@ using namespace std;
  * use set to store visited '1'
  * * unordered container can't use pair, because it uses std::hash to computing key value,
  * * and there is no std::hash for std::pair in C++ library.
+ *
+ * Time:
+ * O(mn): need to traverse whole 2-d array
+ *
+ * Space:
+ * O(mn): seen: if all elements are 1
+ *
+ * Optimize
+ * don't need set to store visited node, just change 1 to 0 will do the same work
+ *
+ * Time:
+ * O(mn): need to traverse whole 2-d array
+ *
+ * Space:
+ * O(mn): recursive call stack
+ *
  */
 void bfs(vector<vector<char>>& grid, queue<pair<int, int>>& q, set<pair<int, int>>& seen){
     while(!q.empty()){
@@ -32,6 +48,16 @@ void bfs(vector<vector<char>>& grid, queue<pair<int, int>>& q, set<pair<int, int
         seen.insert({x, y});
     }
 }
+void dfs(vector<vector<char>>& grid, int x, int y, set<pair<int, int>>& seen){
+    if(x<0 || y<0 || x==grid.size() || y==grid[0].size() || seen.count({x, y}) || grid[x][y] == '0')
+        return;
+
+    seen.insert({x, y});
+    dfs(grid, x+1, y, seen);
+    dfs(grid, x-1, y, seen);
+    dfs(grid, x, y+1, seen);
+    dfs(grid, x, y-1, seen);
+}
 
 int numIslands(vector<vector<char>>& grid) {
     set<pair<int, int>> seen;
@@ -43,6 +69,7 @@ int numIslands(vector<vector<char>>& grid) {
             if(grid[i][j] == '1' && !seen.count({i, j})) {
                 q.push({i, j});
                 bfs(grid, q, seen);
+                // dfs(grid, i, j, seen);
                 ans++;
             }
         }
