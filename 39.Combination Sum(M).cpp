@@ -44,6 +44,9 @@ vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
  *
  * Time:
  * O(2^target): in the decision tree, we have two paths, and the height will be added most time of target.
+ *
+ * Space:
+ * O(longest_combination.size())
  */
 
 void op_dfs(vector<vector<int>>& ans, vector<int>& cur, int index, vector<int>& candidates, int target){
