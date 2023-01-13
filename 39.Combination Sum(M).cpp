@@ -34,3 +34,34 @@ vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
     dfs(ans, current, 0, candidates, target);
     return ans;
 }
+
+/*
+ * Optimize
+ *
+ * since we can not choose duplicate combinations, we use specific tree method to achieve.
+ * Tree will have two children, one is to choose candidate[i], the other path will not.
+ * During choosing, we will check if we match target, or exceed target(To check this we can use minus instead of accu.)
+ *
+ * Time:
+ * O(2^target): in the decision tree, we have two paths, and the height will be added most time of target.
+ */
+
+void op_dfs(vector<vector<int>>& ans, vector<int>& cur, int index, vector<int>& candidates, int target){
+    if(index == candidates.size() || target < 0)
+        return;
+    if(target == 0){
+        ans.push_back(cur);
+        return;
+    }
+    // Don't choose candidates[index], and move on to next candidates.
+    // it can only be done, when cur is not pass-by-address, but it's much slower.
+    // op_dfs(ans, cur, index+1, candidates, target);
+
+    // Choose candidates[index]
+    cur.push_back(candidates[index]);
+    op_dfs(ans, cur, index, candidates, target-candidates[index]);
+
+    // Don't choose candidates[index], and move on to next candidates.
+    cur.pop_back();
+    op_dfs(ans, cur, index+1, candidates, target);
+}
