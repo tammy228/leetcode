@@ -8,6 +8,11 @@ using namespace std;
  * 1. create a dp array to store every character that can or cannot be found in dictionary
  * 2. dp condition: if wordDict[i].size() != string[i:j] -> not the same
  *
+ * Time:
+ * O(MN) -> M for s.size(), N for how many words are there in wordDict
+ *
+ * Space:
+ * O(M) -> dp
  */
 bool wordBreak(string s, vector<string>& wordDict) {
     vector<bool> dp(s.size()+1, false);
