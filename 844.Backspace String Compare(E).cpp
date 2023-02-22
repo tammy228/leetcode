@@ -8,7 +8,7 @@ using namespace std;
  * and then compare two stack to see if they are same
  *
  * Time:
- * O(N) -> N for max(s.size(), t.size())
+ * O(M + N) -> N for max(s.size(), t.size())
  *
  * Space:
  * O(M + N) -> N for s.size() M for t.size()
