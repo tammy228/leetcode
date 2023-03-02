@@ -28,7 +28,7 @@ using namespace std;
  * Use set to store every combination of the array
  *
  * **Set.insert is much slower than vector and can not control the space complexity
- *
+ * **Use dp instead of set
  * Time:
  * O(N*sum(nums))
  *
@@ -44,20 +44,16 @@ bool canPartition(vector<int>& nums) {
     int total = accumulate(nums.begin(), nums.end(), 0);
     if (total % 2 != 0) return false;
 
-    unordered_set<int> set;
-    set.insert(0);
-    for(int i=0; i<nums.size(); i++){
+
+    vector<bool> dp(total/2+1, false);
+    dp[0] = true;
+
+    for(auto & n : nums){
         // Need to use another set insert, cause can't add set while iterating
-        unordered_set<int> temp_set;
-        for(auto ele : set) {
-            if(ele + nums[i] == total / 2) return true;
-            temp_set.insert(ele + nums[i]);
-            temp_set.insert(ele);
+        for(int i=total/2; i>=n; i--){
+            if(dp[i-n]) dp[i] = true;
+            if(dp[total/2]) return true;
         }
-        set = temp_set;
     }
-    if(set.count(total/2))
-        return true;
-    else
-        return false;
+    return dp[total/2];
 }
