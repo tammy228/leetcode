@@ -1,5 +1,7 @@
 #include <stack>
 #include <string>
+#include <vector>
+#include <unordered_map>
 using namespace std;
 /*
  * My Solution
@@ -15,37 +17,37 @@ using namespace std;
  * Space:
  * O(N): stack, N is tokens.size()
  */
-int evalRPN(vector<string>& tokens) {
-    stack<long long int> numbers;
-    for(int i=0; i<tokens.size(); i++){
-        int operators = int(tokens[i][0]);
-        // if(i == "+" || i == "-" || i == "*" || i == "/")  可以直接用string 等於
-        if(tokens[i].size() == 1 && (operators == 42 || operators == 43 || operators == 45 || operators == 47)){
-            long long int num1 = numbers.top();
-            numbers.pop();
-            long long int num2 = numbers.top();
-            numbers.pop();
-            long long int calc;
-            // *
-            if(operators == 42){
-                calc = num1 * num2;
-                // +
-            }else if(operators == 43){
-                calc = num1 + num2;
-                // -
-            }else if(operators == 45){
-                calc = num2 - num1;
-                // /
-            }else{
-                calc = num2 / num1;
-            }
-            numbers.push(calc);
-        }else{
-            numbers.push(stoll(tokens[i]));
-        }
-    }
-    return numbers.top();
-}
+//int evalRPN(vector<string>& tokens) {
+//    stack<long long int> numbers;
+//    for(int i=0; i<tokens.size(); i++){
+//        int operators = int(tokens[i][0]);
+//        // if(i == "+" || i == "-" || i == "*" || i == "/")  可以直接用string 等於
+//        if(tokens[i].size() == 1 && (operators == 42 || operators == 43 || operators == 45 || operators == 47)){
+//            long long int num1 = numbers.top();
+//            numbers.pop();
+//            long long int num2 = numbers.top();
+//            numbers.pop();
+//            long long int calc;
+//            // *
+//            if(operators == 42){
+//                calc = num1 * num2;
+//                // +
+//            }else if(operators == 43){
+//                calc = num1 + num2;
+//                // -
+//            }else if(operators == 45){
+//                calc = num2 - num1;
+//                // /
+//            }else{
+//                calc = num2 / num1;
+//            }
+//            numbers.push(calc);
+//        }else{
+//            numbers.push(stoll(tokens[i]));
+//        }
+//    }
+//    return numbers.top();
+//}
 
 /*
  * Optimize Solution
