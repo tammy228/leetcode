@@ -19,16 +19,44 @@ using namespace std;
  * Time: O(n+m)
  * Space: O(1)
  */
+//void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+//    if(n != 0){
+//        int index1 = 0;
+//        for(int index2=0; index2<n; index2++){
+//            while(nums2[index2] > nums1[index1] && index1 < m+index2) index1++;
+//            nums1.insert(nums1.begin()+index1, nums2[index2]);
+//        }
+//        while(nums1.back() == 0 && n != 0){
+//            nums1.pop_back();
+//            n--;
+//        }
+//    }
+//}
+/*
+ * Optimize
+ * merge backward, since zero are at the end , might just use the advantage
+ *
+ */
 void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-    if(n != 0){
-        int index1 = 0;
-        for(int index2=0; index2<n; index2++){
-            while(nums2[index2] > nums1[index1] && index1 < m+index2) index1++;
-            nums1.insert(nums1.begin()+index1, nums2[index2]);
+    int last = m + n - 1;
+    n--;
+    m--;
+    while(m >= 0 && n >= 0)
+    {
+        if(nums1[m] > nums2[n])
+        {
+            nums1[last] = nums1[m];
+            m--;
         }
-        while(nums1.back() == 0 && n != 0){
-            nums1.pop_back();
+        else
+        {
+            nums1[last] = nums2[n];
             n--;
         }
+        last--;
+    }
+    while (n >= 0)
+    {
+        nums1[last--] = nums2[n--];
     }
 }
