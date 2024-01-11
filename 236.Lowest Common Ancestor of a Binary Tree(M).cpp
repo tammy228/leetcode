@@ -35,3 +35,28 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
     int _ = dfs(root, p, q, result);
     return result;
 }
+
+/*
+ * Optimize
+ * DFS return TreeNode
+ */
+TreeNode* dfs(TreeNode* root, TreeNode* p, TreeNode*q)
+{
+    if(root == nullptr)
+        return nullptr;
+    if(root->val == p->val || root->val == q->val)
+        return root;
+
+    TreeNode* left = dfs(root->left, p, q);
+    TreeNode* right = dfs(root->right, p, q);
+
+    if(left != nullptr && right != nullptr)
+        return root;
+    else if (left)
+        return left;
+    else
+        return right;
+}
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+    return dfs(root, p , q);
+}
