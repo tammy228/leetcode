@@ -13,6 +13,9 @@ struct TreeNode {
  * My Solution
  * use level traversal
  * for each level traverse right to left, store first element to ans
+ *
+ * Time: O(N) , for N is all node
+ * Space: O(N)
  */
 vector<int> rightSideView(TreeNode* root) {
     vector<int> ans;
