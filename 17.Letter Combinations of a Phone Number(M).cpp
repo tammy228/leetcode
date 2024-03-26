@@ -52,7 +52,7 @@ using namespace std;
  * Optimize
  * using backtracking
  *
- * Time: O(N*4^N) -> N is digits.size()
+ * Time: O(4^N) -> N is digits.size()
  * Space: O(N)    -> N is for recursive call
  */
 void backtracking(int index, string& digits, unordered_map<char, string>& map, string& result, vector<string>& ans) {
