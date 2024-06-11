@@ -6,7 +6,7 @@ using namespace std;
  * Use array to check if there are repetition
  *
  * Time: O(MN) -> where M = board.size(), N = board[0].size()
- * Space: O(100 * 3) -> O(1)
+ * Space: O(MN * 3) -> O(MN)
  */
 int det_three_x_three(int row, int col)
 {
