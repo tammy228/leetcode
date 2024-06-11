@@ -34,6 +34,9 @@ vector<int> dailyTemperatures(vector<int> &temperatures)
  * each iteration, we take out the top of the stack and compare to current temp.
  * if curr_temp > top_temp:  pop the top until the top is greater current and push current index into the stack
  * else: update the ans, push current index into the stack
+ *
+ * Time: O(N) -> the inner while loop only visit once, worst case should be O(2N)
+ * Space: O(N) -> stack usage
  */
 vector<int> dailyTemperatures(vector<int> &temperatures)
 {
