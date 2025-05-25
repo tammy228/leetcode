@@ -1,5 +1,5 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 using namespace std;
 /*
  * My Solution
@@ -10,25 +10,31 @@ using namespace std;
  *    stop: left == mid || In the ascending subarray
  * Edge Case
  *  (1) One element
+ *  (2) [2,1]
+ *  (3) [3, 1, 2]
  */
-int findMin(vector<int>& nums) {
-    int left=0, right=nums.size()-1;
-    if(nums.size() == 1)
-        return nums[0];
-    while(left < right){
-        int mid = (left + right) / 2;
-        if(nums[right] > nums[left])
-            return nums[left];
-        if(nums[mid] > nums[left])
-            left = mid;
-        else if(nums[mid] < nums[left])
-            right = mid;
-        else
-            if(nums[left] > nums[right])
-                return nums[right];
+int findMin(vector<int> &nums)
+{
+    int left = 0, right = nums.size() - 1;
+    int min_num = INT_MAX;
+    while (left <= right)
+    {
+        int mid = (right + left) / 2;
+        // normal
+        if (nums[right] >= nums[left])
+        {
+            return min(min_num, nums[left]);
+        }
+        else // rotated
+        {
+            if (nums[mid] >= nums[left])
+                left = mid + 1;
             else
-                return nums[left];
+            {
+                right = mid - 1;
+                min_num = min(min_num, nums[mid]);
+            }
+        }
     }
-    return 0;
+    return min(min_num, nums[left]);
 }
-
