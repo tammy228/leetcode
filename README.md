@@ -2,7 +2,7 @@
 
 pick up c++ after graduated.
 
-All of the files contain "My Solution" and "Optimze Soluttion".
+All of the files contain "My Solution" and "Optimze Solution".
 
 ### How I Practicing
 First, i write it by myself, and if the runtime is less than 50%, i will go look for optimize solution.
